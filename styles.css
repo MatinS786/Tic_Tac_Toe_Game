@@ -55,7 +55,7 @@ body {
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 #reset-btn:hover {
-    transform: scale(1.1); 
+    transform: scale(1.2); 
     cursor:pointer; 
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
 }
@@ -71,7 +71,7 @@ body {
 }
 
 #new-btn:hover {
-    transform: scale(1.1); 
+    transform: scale(1.2); 
     cursor:pointer; 
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
 }
