@@ -24,6 +24,12 @@ const resetGame = () => {
     msgContainer.classList.add("hide")
 };
 
+const gameDraw = () => {
+    msg.innerText = `Game Was A Draw`;
+    msg.classList.add("winner-text");
+    msgContainer.classList.remove("hide");
+    disableBtns();
+}
 boxes.forEach((box) => {
     box.addEventListener("click", () => {
         if(turnO) {
@@ -60,17 +66,25 @@ const showWinner = (winner) => {
 };
 
 const checkWinner = () => {
-    for (let pattern of winPatterns) {
-         let pos1Val = boxes[pattern[0]].innerText;
-         let pos2Val = boxes[pattern[1]].innerText;
-         let pos3Val = boxes[pattern[2]].innerText;
+    let isDraw = true;
 
-         if(pos1Val != "" && pos2Val != "" && pos3Val != "") {
-            if(pos1Val === pos2Val && pos2Val === pos3Val) {
-                console.log("winner",pos1Val);
-                showWinner(pos1Val);
-            }
+    for (let pattern of winPatterns) {
+        let pos1Val = boxes[pattern[0]].innerText;
+        let pos2Val = boxes[pattern[1]].innerText;
+        let pos3Val = boxes[pattern[2]].innerText;
+        if (pos1Val !== "" && pos1Val === pos2Val && pos2Val === pos3Val) {
+            showWinner(pos1Val); 
+            return; 
         }
+    }
+    
+boxes.forEach((box) => {
+    if (box.innerText === "") {
+        isDraw = false; 
+    }
+});
+    if (isDraw) {
+        gameDraw();
     }
 };
 
